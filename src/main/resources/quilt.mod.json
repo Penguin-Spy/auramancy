@@ -20,7 +20,8 @@
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "dev.penguinspy.auramancy.Auramancy"
+			"init": "dev.penguinspy.auramancy.Auramancy",
+			"client_init": "dev.penguinspy.auramancy.AuramancyClient"
 		},
 		"depends": [
 			{

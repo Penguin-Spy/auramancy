@@ -1,11 +1,15 @@
 package dev.penguinspy.auramancy.items;
 
 import org.quiltmc.loader.api.ModContainer;
+import org.quiltmc.qsl.block.entity.api.QuiltBlockEntityTypeBuilder;
 import org.quiltmc.qsl.block.extensions.api.QuiltBlockSettings;
 import org.quiltmc.qsl.item.setting.api.QuiltItemSettings;
 
+import dev.penguinspy.auramancy.blocks.NodeBlock;
+import dev.penguinspy.auramancy.blocks.NodeBlockEntity;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.block.Block;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -27,8 +31,17 @@ public class AuramancyItems {
 			.drops(new Identifier("auramancy:blocks/enchanted_stone"))
 			.strength(1.5f, 9));
 
+	public static final Block NODE = new NodeBlock();
+
+	public static final BlockEntityType<NodeBlockEntity> NODE_BLOCK_ENTITY = Registry.register(
+			Registries.BLOCK_ENTITY_TYPE, new Identifier("auramancy:node"),
+			QuiltBlockEntityTypeBuilder.create(NodeBlockEntity::new, NODE).build());
+
 	public static void register(ModContainer mod) {
 		String mod_id = mod.metadata().id();
+
+		// register blocks with their ID
+		Registry.register(Registries.BLOCK, new Identifier(mod_id, "node"), NODE);
 
 		// register items and block-items with their ID
 		Item[] items = {
