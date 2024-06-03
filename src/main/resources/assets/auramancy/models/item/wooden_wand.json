@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+	"textures": {
+		"layer0": "auramancy:item/wooden_wand"
+	}
+}
